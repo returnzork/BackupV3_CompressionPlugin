@@ -66,13 +66,10 @@ namespace Compression_Plugin
 
         public void Work(string[] Imports)
         {
-            //TODO compression
-            Console.WriteLine(Imports[1]); ;
-
-
             using (ZipFile zip = new ZipFile())
             {
                 //index 1 of imports is the world to location
+                //index 3 is the name of the world
                 zip.AddDirectory(Imports[1]);
                 zip.Save(Imports[1] + Imports[3] + ".zip");
             }
