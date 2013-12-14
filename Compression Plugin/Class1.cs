@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using System.ComponentModel.Composition;
 using returnzork.BackupV3_API;
@@ -14,6 +10,10 @@ namespace Compression_Plugin
     [Export(typeof(BackupV3API))]
     public class Class1 : BackupV3API
     {
+
+        Settings settings = new Settings();
+
+
         public string Author()
         {
             return "Returnzork";
@@ -39,6 +39,8 @@ namespace Compression_Plugin
 
         public void Interface()
         {
+            settings_form sf = new settings_form();
+            sf.Show();
         }
 
         public string Name()
@@ -70,9 +72,13 @@ namespace Compression_Plugin
             {
                 //index 1 of imports is the world to location
                 //index 3 is the name of the world
-                zip.AddDirectory(Imports[1]);
+                zip.AddDirectory(Imports[1] + Imports[3]);
                 zip.Save(Imports[1] + Imports[3] + ".zip");
             }
+
+            if (settings.DeleteUnCompressedWorld)
+                if(System.IO.Directory.Exists(Imports[1]))
+                    System.IO.Directory.Delete(Imports[1]);
         }
     }
 }
