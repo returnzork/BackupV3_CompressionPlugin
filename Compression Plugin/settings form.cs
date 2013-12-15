@@ -11,9 +11,20 @@ namespace Compression_Plugin
 {
     public partial class settings_form : Form
     {
+
+        Settings settings = new Settings();
+
         public settings_form()
         {
             InitializeComponent();
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            if (DeleteWorldCheckBox.Checked)
+                settings.DeleteUnCompressedWorld = true;
+            else
+                settings.DeleteUnCompressedWorld = false;
         }
     }
 }

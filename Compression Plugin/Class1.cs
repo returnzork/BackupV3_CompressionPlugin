@@ -72,13 +72,16 @@ namespace Compression_Plugin
             {
                 //index 1 of imports is the world to location
                 //index 3 is the name of the world
+
+                zip.ParallelDeflateThreshold = -1;  //fixes the compression never finishing for some reason
+
                 zip.AddDirectory(Imports[1] + Imports[3]);
                 zip.Save(Imports[1] + Imports[3] + ".zip");
             }
 
             if (settings.DeleteUnCompressedWorld)
                 if(System.IO.Directory.Exists(Imports[1]))
-                    System.IO.Directory.Delete(Imports[1]);
+                    System.IO.Directory.Delete(Imports[1], true);
         }
     }
 }
