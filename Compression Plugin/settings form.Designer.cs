@@ -61,6 +61,7 @@
             this.Controls.Add(this.DeleteWorldCheckBox);
             this.Name = "settings_form";
             this.Text = "settings_form";
+            this.Load += new System.EventHandler(this.settings_form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

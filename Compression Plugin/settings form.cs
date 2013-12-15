@@ -26,5 +26,13 @@ namespace Compression_Plugin
             else
                 settings.DeleteUnCompressedWorld = false;
         }
+
+        private void settings_form_Load(object sender, EventArgs e)
+        {
+            if (settings.DeleteUnCompressedWorld)
+                DeleteWorldCheckBox.Checked = true;
+            else
+                DeleteWorldCheckBox.Checked = false;
+        }
     }
 }
