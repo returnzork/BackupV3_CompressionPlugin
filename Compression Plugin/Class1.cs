@@ -80,8 +80,8 @@ namespace Compression_Plugin
             }
 
             if (settings.DeleteUnCompressedWorld)
-                if(System.IO.Directory.Exists(Imports[1]))
-                    System.IO.Directory.Delete(Imports[1], true);
+                if(System.IO.Directory.Exists(Imports[1] + Imports[3]))
+                    System.IO.Directory.Delete(System.IO.Path.Combine(Imports[1] + Imports[3]), true);
         }
     }
 }
